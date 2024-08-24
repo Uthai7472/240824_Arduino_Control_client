@@ -6,7 +6,7 @@ const App = () => {
   const [arduinoValue, setArduinoValue] = useState(null);
 
   const sendCommand = (command) => {
-    axios.post('http://localhost:3001/api/arduino-control', { command })
+    axios.post('https://arduino-control-server.vercel.app/api/arduino-control', { command })
       .then(response => {
         setStatus(command);
         console.log(response.data);
@@ -16,7 +16,7 @@ const App = () => {
 
   const fetchArduinoValue = async () => {
     try {
-        const response = await axios.get('http://localhost:3001/api/arduino-data');
+        const response = await axios.get('https://arduino-control-server.vercel.app/api/arduino-data');
         setArduinoValue(response.data.randomValue);
         console.log('Received random value:', arduinoValue);
         // Do something with the randomValue, like updating state if in a React component
